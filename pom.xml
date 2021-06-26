@@ -120,7 +120,6 @@
                             <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                             <options>
                                 <querydsl.entityAccessors>jpa = true</querydsl.entityAccessors>
-                                <querydslSourcesDir>$buildDir/generated-sources </querydslSourcesDir>
                             </options>
                         </configuration>
                     </execution>
