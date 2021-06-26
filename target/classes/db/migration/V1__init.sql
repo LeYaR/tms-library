@@ -96,3 +96,18 @@ values
 #     'The Divine Comedy'
 ('MP2316484', 'Ivan', 'Ivanov', {d '1964-06-22'}, 1, 375291237694, 'abc@mail.ru', '123Cr'),
 ('MP6546484','Pavel','Petrov',{d '1999-05-21'}, 2, 375447691242, 'abcd@mail.ru', '987Cr');
+
+insert into fine (ID, Amount, Paid)
+values
+(1, 20, true),
+(2, 15, false);
+
+insert into bin(ID, Floor, Room, Bin_No)
+VALUES
+(1, 4, 2, 4585),
+(2, 5, 3, 6543);
+
+insert into book_movement (ID, User_Id, Book_ISBN, Bin_Id, Quantity, Issue_date, Returned_date, Real_returned_date, Returned, Expired, Fine_Id)
+VALUES
+(1, 'MP2316484', '978-140007915', 1, 1, {d '2021-06-22'}, {d '2021-06-30'}, {d '2021-07-02'}, true, true, 2),
+(2, 'MP6546484', '978-045120863', 2, 3, {d '2021-06-15'}, {d '2021-06-25'}, {d '2021-07-24'}, true, false, 1);
