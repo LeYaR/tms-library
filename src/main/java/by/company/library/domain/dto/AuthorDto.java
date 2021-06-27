@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class AuthorDto {
 
-    private String id;
+    private int id;
     private String name;
     private String surname;
     private String placeOfBirth;

@@ -1,17 +1,67 @@
 package by.company.library.domain.mapping;
 
+import by.company.library.IntegrationTestBase;
+import by.company.library.domain.dbo.AuthorEntity;
+import by.company.library.domain.dto.AuthorDto;
 import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AuthorMapperTest {
+class AuthorMapperTest extends IntegrationTestBase {
+
+    public static final AuthorMapper mapper = new AuthorMapper(new ModelMapper());
+
+    private AuthorDto authorDto;
+    private AuthorEntity authorEntity;
 
     @Test
-    void fromListDbo() {
+    void testFromListDbo() {
+        authorEntity = new AuthorEntity();
+        authorEntity.setId(4);
+        authorEntity.setName("Donalt");
+        authorEntity.setSurname("Duck");
+        authorEntity.setPlaceOfBirth("Yorker");
+        authorEntity.setBirthDate(new Date());
+
+        List<AuthorDto> fromList = mapper.fromListDbo(List.of(authorEntity));
+        authorDto = fromList.get(0);
+
+        boolean isEqual = (authorDto.getId() == authorEntity.getId() &&
+                authorDto.getName().equals(authorEntity.getName()) &&
+                authorDto.getSurname().equals(authorEntity.getSurname()) &&
+                authorDto.getPlaceOfBirth().equals(authorEntity.getPlaceOfBirth()) &&
+                authorDto.getBirthDate().equals(authorEntity.getBirthDate())
+        );
+
+        assertTrue(isEqual);
+
     }
 
     @Test
-    void fromDbo() {
+    void testFromDbo() {
+        authorEntity = new AuthorEntity();
+        authorEntity.setId(4);
+        authorEntity.setName("Donalt");
+        authorEntity.setSurname("Duck");
+        authorEntity.setPlaceOfBirth("Yorker");
+        authorEntity.setBirthDate(new Date());
+
+        authorDto = mapper.fromDbo(authorEntity);
+
+        boolean isEqual = (authorDto.getId() == authorEntity.getId() &&
+                authorDto.getName().equals(authorEntity.getName()) &&
+                authorDto.getSurname().equals(authorEntity.getSurname()) &&
+                authorDto.getPlaceOfBirth().equals(authorEntity.getPlaceOfBirth()) &&
+                authorDto.getBirthDate().equals(authorEntity.getBirthDate())
+        );
+
+        assertTrue(isEqual);
+
     }
 
     @Test

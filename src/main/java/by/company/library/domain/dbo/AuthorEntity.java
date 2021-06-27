@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -27,7 +28,7 @@ public class AuthorEntity {
 
     private String placeOfBirth;
 
-    private LocalDate birthDate;
+    private Date birthDate;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_author",
