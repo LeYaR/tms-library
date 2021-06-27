@@ -54,7 +54,7 @@ class BinMapperTest extends IntegrationTestBase {
     }
 
     @Test
-    void toDbo() {
+    void testToDbo() {
         binDto = new BinDto();
         binDto.setId(4);
         binDto.setFloor(2);

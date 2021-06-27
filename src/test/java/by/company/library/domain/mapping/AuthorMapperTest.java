@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,8 +34,7 @@ class AuthorMapperTest extends IntegrationTestBase {
                 authorDto.getName().equals(authorEntity.getName()) &&
                 authorDto.getSurname().equals(authorEntity.getSurname()) &&
                 authorDto.getPlaceOfBirth().equals(authorEntity.getPlaceOfBirth()) &&
-                authorDto.getBirthDate().equals(authorEntity.getBirthDate())
-        );
+                authorDto.getBirthDate().equals(authorEntity.getBirthDate()));
 
         assertTrue(isEqual);
 
@@ -57,14 +55,29 @@ class AuthorMapperTest extends IntegrationTestBase {
                 authorDto.getName().equals(authorEntity.getName()) &&
                 authorDto.getSurname().equals(authorEntity.getSurname()) &&
                 authorDto.getPlaceOfBirth().equals(authorEntity.getPlaceOfBirth()) &&
-                authorDto.getBirthDate().equals(authorEntity.getBirthDate())
-        );
+                authorDto.getBirthDate().equals(authorEntity.getBirthDate()));
 
         assertTrue(isEqual);
 
     }
 
     @Test
-    void toDbo() {
+    void testToDbo() {
+        authorDto = new AuthorDto();
+        authorDto.setId(4);
+        authorDto.setName("Donalt");
+        authorDto.setSurname("Duck");
+        authorDto.setPlaceOfBirth("Yorker");
+        authorDto.setBirthDate(new Date());
+
+        authorEntity = mapper.toDbo(authorDto);
+
+        boolean isEqual = (authorDto.getId() == authorEntity.getId() &&
+                authorDto.getName().equals(authorEntity.getName()) &&
+                authorDto.getSurname().equals(authorEntity.getSurname()) &&
+                authorDto.getPlaceOfBirth().equals(authorEntity.getPlaceOfBirth()) &&
+                authorDto.getBirthDate().equals(authorEntity.getBirthDate()));
+
+        assertTrue(isEqual);
     }
 }
