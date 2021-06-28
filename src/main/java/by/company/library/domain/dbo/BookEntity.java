@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -23,7 +23,7 @@ public class BookEntity {
 
     private String name;
 
-    private LocalDate publishingDate;
+    private Date publishingDate;
 
     private BigDecimal price;
 

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +16,7 @@ public class BookDto {
 
     private String isbn;
     private String name;
-    private LocalDate publishingDate;
+    private Date publishingDate;
     private BigDecimal price;
     private boolean inStock;
 }

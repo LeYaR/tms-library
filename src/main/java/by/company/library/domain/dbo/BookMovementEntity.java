@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -34,11 +34,11 @@ public class BookMovementEntity {
 
     private int quantity;
 
-    private LocalDate issueDate;
+    private Date issueDate;
 
-    private LocalDate returnedDate;
+    private Date returnedDate;
 
-    private LocalDate realReturnedDate;
+    private Date realReturnedDate;
 
     private boolean returned;
 
