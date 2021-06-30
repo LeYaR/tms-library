@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -20,7 +21,6 @@ public class BookController {
 
     @GetMapping("/list")
     public String getAll(Model model) {
-
         List<BookDto> books = service.getAll();
         model.addAttribute("books", books);
         return "list_books";
@@ -29,7 +29,7 @@ public class BookController {
     public String showFormForAdd(Model model){
         BookDto bookDto = new BookDto();
         model.addAttribute("books", bookDto);
-        return "book-form";
+        return "book_form";
     }
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("isbn") String isbn, Model theModel) {
@@ -37,7 +37,7 @@ public class BookController {
         BookDto bookDto = service.getById(isbn);
         //set book as a model attribute to pre-populate the form
         theModel.addAttribute("books", bookDto);
-        return "book-form";
+        return "book_form";
     }
     @PostMapping("/save")
     public String saveBook(@ModelAttribute("books") BookDto bookDto) {
