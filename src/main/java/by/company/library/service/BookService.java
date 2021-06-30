@@ -7,8 +7,10 @@ import by.company.library.exception.api.BookNotFoundException;
 import by.company.library.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.awt.desktop.OpenFilesEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -35,5 +37,9 @@ public class BookService {
     public BookDto add(BookDto bookDto) {
         var entity = repository.save(mapper.toDbo(bookDto));
         return mapper.fromDbo(entity);
+    }
+
+    public void deleteById(String isbn){
+        repository.deleteById(isbn);
     }
 }
