@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<UserEntity, String> {
 
+    UserEntity findByPassportNo(String passportNo);
+
     Optional<UserEntity> findByNameContaining(String name);
 
     List<UserEntity> findAllByNameAndSurname(String name, String surname);
