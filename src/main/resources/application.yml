@@ -10,8 +10,8 @@ spring:
     baseline-on-migrate: true
   mvc:
     format:
-      date: dd-MM-yyyy
-      date-time: yyyy-MM-dd HH:mm:ss
-      time: HH:mm:ss
-  jackson:
-    time-zone: Etc/GMT-3
+      date: yyyy-MM-dd
+#      date-time: yyyy-MM-dd HH:mm:ss
+#      time: HH:mm:ss
+#  jackson:
+#    time-zone: Etc/GMT-3
