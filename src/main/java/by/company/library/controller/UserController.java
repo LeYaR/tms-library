@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/save")
     public String saveUsers(@ModelAttribute("users") UserDto userDto){
         // save the user
-        service.saveUser(userDto);
+        service.add(userDto);
         return "redirect:/users/login";
     }
 }

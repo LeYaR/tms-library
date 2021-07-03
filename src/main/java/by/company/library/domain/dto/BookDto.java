@@ -19,4 +19,5 @@ public class BookDto {
     private Date publishingDate;
     private BigDecimal price;
     private boolean inStock;
+    private AuthorDto authorDto;
 }

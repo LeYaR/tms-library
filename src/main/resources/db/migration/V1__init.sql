@@ -111,3 +111,8 @@ insert into book_movement (ID, User_Id, Book_ISBN, Bin_Id, Quantity, Issue_date,
 VALUES
 (1, 'MP2316484', '978-140007915', 1, 1, {d '2021-06-22'}, {d '2021-06-30'}, {d '2021-07-02'}, true, true, 2),
 (2, 'MP6546484', '978-045120863', 2, 3, {d '2021-06-15'}, {d '2021-06-25'}, {d '2021-07-24'}, true, false, 1);
+
+insert into book_author(ID, Book_ISBN, Author_Id)
+VALUES
+(1, '978-140007915', 1),
+(2, '978-045120863', 2);

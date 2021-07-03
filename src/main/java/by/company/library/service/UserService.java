@@ -24,11 +24,6 @@ public class UserService {
         return mapper.fromDbo(userEntity);
     }
 
-    public UserDto saveUser(UserDto userDto){
-        var entity = repository.save(mapper.toDbo(userDto));
-        return mapper.fromDbo(entity);
-    }
-
     public UserDto add(UserDto userDto) throws UserNotValidException {
         var entity = repository.save(mapper.toDbo(userDto));
         return mapper.fromDbo(entity);
