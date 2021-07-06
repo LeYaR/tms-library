@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService service;
@@ -25,7 +25,7 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("home_page")
+    @PostMapping("/home_page")
     public String greetingSubmit(@ModelAttribute UserDto userDto, Model model) {
         model.addAttribute("passportNo", userDto.getPassportNo());
         model.addAttribute("password", userDto.getPassword());

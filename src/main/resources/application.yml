@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: root
-    password: mysql
-    url: jdbc:mysql://localhost:3310/library
+    password: root
+    url: jdbc:mysql://localhost:3306/library
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # V(version)__description.sql
@@ -15,3 +15,7 @@ spring:
 #      time: HH:mm:ss
 #  jackson:
 #    time-zone: Etc/GMT-3
+
+jwt:
+  secret: test
+  expired: 1

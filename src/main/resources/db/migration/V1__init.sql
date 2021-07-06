@@ -1,73 +1,72 @@
 CREATE TABLE IF NOT EXISTS role (
-                      ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                      Role_type varchar(20)
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Role_type varchar(20)
 );
 
 CREATE TABLE IF NOT EXISTS user (
-                      Passport_No varchar(14) PRIMARY KEY NOT NULL,
-                      Name varchar(100),
-                      Surname varchar(100),
-                      Birth_date date,
-                      Role_Id int NOT NULL,
-                      Phone varchar(20),
-                      Email varchar(100),
-                      Password varchar(30),
-                      FOREIGN KEY (Role_Id) REFERENCES role (ID) ON DELETE cascade
+    Passport_No varchar(14) PRIMARY KEY NOT NULL,
+    Name varchar(100),
+    Surname varchar(100),
+    Birth_date date,
+    Role_Id int NOT NULL,
+    Phone varchar(20),
+    Email varchar(100),
+    Password varchar(30),
+    FOREIGN KEY (Role_Id) REFERENCES role (ID) ON DELETE cascade
 );
 
 CREATE TABLE IF NOT EXISTS fine (
-                      ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                      Amount decimal,
-                      Paid boolean
-
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Amount decimal,
+    Paid boolean
 );
 
 CREATE TABLE IF NOT EXISTS book (
-                      ISBN varchar(13) PRIMARY KEY NOT NULL,
-                      Name varchar(1024),
-                      Publishing_date date,
-                      Price decimal,
-                      In_stock boolean
+    ISBN varchar(13) PRIMARY KEY NOT NULL,
+    Name varchar(1024),
+    Publishing_date date,
+    Price decimal,
+    In_stock boolean
 );
 
 CREATE TABLE IF NOT EXISTS author (
-                        ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                        Name varchar(50),
-                        Surname varchar(50),
-                        Place_of_birth varchar(50),
-                        Birth_date date
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Name varchar(50),
+    Surname varchar(50),
+    Place_of_birth varchar(50),
+    Birth_date date
 );
 
 CREATE TABLE IF NOT EXISTS book_author (
-                             ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                             Book_ISBN varchar(13),
-                             Author_Id int,
-                             FOREIGN KEY (Author_Id) REFERENCES author (ID) ON DELETE cascade,
-                             FOREIGN KEY (Book_ISBN) REFERENCES book (ISBN) ON DELETE cascade
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Book_ISBN varchar(13),
+    Author_Id int,
+    FOREIGN KEY (Author_Id) REFERENCES author (ID) ON DELETE cascade,
+    FOREIGN KEY (Book_ISBN) REFERENCES book (ISBN) ON DELETE cascade
 );
 CREATE TABLE IF NOT EXISTS bin (
-                     ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                     Floor int,
-                     Room int,
-                     Bin_No int
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Floor int,
+    Room int,
+    Bin_No int
 );
 
 CREATE TABLE IF NOT EXISTS book_movement (
-                               ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                               User_Id varchar(14),
-                               Book_ISBN varchar(13),
-                               Bin_Id int,
-                               Quantity int,
-                               Issue_date date,
-                               Returned_date date,
-                               Real_returned_date date,
-                               Returned boolean,
-                               Expired boolean,
-                               Fine_Id integer UNIQUE,
-                               FOREIGN KEY (User_Id) REFERENCES user (Passport_No),
-                               FOREIGN KEY (Book_ISBN) REFERENCES book (ISBN),
-                               FOREIGN KEY (Bin_Id) REFERENCES bin (ID),
-                               FOREIGN KEY (Fine_Id) REFERENCES fine (ID)
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    User_Id varchar(14),
+    Book_ISBN varchar(13),
+    Bin_Id int,
+    Quantity int,
+    Issue_date date,
+    Returned_date date,
+    Real_returned_date date,
+    Returned boolean,
+    Expired boolean,
+    Fine_Id integer UNIQUE,
+    FOREIGN KEY (User_Id) REFERENCES user (Passport_No),
+    FOREIGN KEY (Book_ISBN) REFERENCES book (ISBN),
+    FOREIGN KEY (Bin_Id) REFERENCES bin (ID),
+    FOREIGN KEY (Fine_Id) REFERENCES fine (ID)
 );
 insert into author (id, Name, Surname, Place_of_birth, Birth_date)
 values
