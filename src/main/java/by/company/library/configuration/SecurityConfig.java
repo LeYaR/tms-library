@@ -24,20 +24,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()
-                .csrf().disable()
+                .cors().and().csrf().disable()
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/register").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/articles").permitAll()
+                .antMatchers("static/**", "templates/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login.html").failureUrl("/error.html")
+                .formLogin().loginPage("/users/login").permitAll().failureUrl("/error.html")
                 .and()
-                .exceptionHandling().accessDeniedPage("/error.html")
-                .and()
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .exceptionHandling().accessDeniedPage("/error.html");
     }
 
     @Bean
